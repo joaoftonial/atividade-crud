@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% load django_bootstrap5 %}
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Remover Funcionário</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">Funcionário</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th style="width: 30%">Nome</th>
+                            <td>{{ funcionario.nome }}</td>
+                        </tr>
+                        <tr>
+                            <th>CPF</th>
+                            <td>{{ funcionario.cpf }}</td>
+                        </tr>
+                        <tr>
+                            <th>E-mail</th>
+                            <td>{{ funcionario.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Remuneração</th>
+                            <td>R$ {{ funcionario.remuneracao }}</td>
+                        </tr>
+                    </table>
+
+                    <div class="text-center mt-4">
+                        <button type="button" class="btn btn-outline-secondary me-2" onclick="history.back()">
+                            Voltar
+                        </button>
+
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#confirmModal">
+                            Remover
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="confirmModalLabel">⚠️ Alerta!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    Você realmente deseja excluir o funcionário <strong>{{ funcionario.nome }}</strong>?
+                    <br>
+                    Esta ação não poderá ser desfeita.
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Remover</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

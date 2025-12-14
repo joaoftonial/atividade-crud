@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load django_bootstrap5 %}
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Funcionário</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Funcionário</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-bordered table-striped mb-0">
+                        <tbody>
+                            <tr>
+                                <th style="width: 30%">Nome</th>
+                                <td>{{ fun.nome }}</td>
+                            </tr>
+                            <tr>
+                                <th>CPF</th>
+                                <td>{{ fun.cpf }}</td>
+                            </tr>
+                            <tr>
+                                <th>E-mail</th>
+                                <td>{{ fun.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Remuneração</th>
+                                <td>R$ {{ fun.remuneracao }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="mt-4">
+                        <button type="button" onclick="history.back()" class="btn btn-outline-secondary">
+                            Voltar
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

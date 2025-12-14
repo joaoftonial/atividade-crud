@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load django_bootstrap5 %}
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Funcioários</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">Cadastro Funcionário</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <form method="post">
+                        {% csrf_token %}
+
+                        {% bootstrap_field form.nome %}
+                        {% bootstrap_field form.cpf %}
+                        {% bootstrap_field form.email %}
+                        {% bootstrap_field form.remuneracao %}
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                Cadastrar
+                            </button>
+
+                            <button type="button" class="btn btn-outline-secondary ms-2" onclick="history.back()">
+                                Voltar
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
